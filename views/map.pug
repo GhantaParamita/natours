@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title Google Map
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    style.
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+  body
+    h2 Google Map Integration
+    #map(data-location='{"lat":22.5726,"lng":88.3639}') // Kolkata
+
+    script.
+      const location = JSON.parse(document.getElementById("map").dataset.location);
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: location,
+        });
+        new google.maps.Marker({
+          position: location,
+          map: map,
+          title: "Hello from Google Maps!"
+        });
+      }
+
+    //- Replace YOUR_API_KEY with your actual key
+    script(async src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA6u6ae117y0bjiapg1Av7wfrotWK-mvcI&callback=initMap')
