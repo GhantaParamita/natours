@@ -41,15 +41,7 @@ app.options("*", cors());
 app.use(express.static(path.join(__dirname, "public")));
 
 //Set security HTTP headers
-app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      defaultSrc: ["'self'"],
-      connectSrc: ["'self'", "https://natours-6-ncag.onrender.com"],
-    },
-  })
-);
+app.use(helmet());
 
 //Development logging
 if (process.env.NODE_ENV === "development") {
